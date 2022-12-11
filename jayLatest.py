@@ -1,5 +1,6 @@
 import mysql.connector as ms
 import time
+import random
 
 while True:
     try:
@@ -25,6 +26,13 @@ c.execute("create table if not exists QUESTIONS(QID int, question varchar(100), 
 c.execute("create table if not exists STUDENTS(SID int, name varchar(20),date_of_exam char(20), ans1 char(1), ans2 char(1), ans3 char(1), ans4 char(1), ans5 char(1), ans6 char(1), ans7 char(1), ans8 char(1), ans9 char(1), ans10 char(1),score int);")
 
 d.commit()
+
+idx = [0,1,2,3,4,5,6,7,8,9]
+
+def check():
+    random_idx = random.choice(idx)
+    idx.remove(random_idx)
+    return random_idx
 
 
 def generate_Ques():
@@ -335,260 +343,260 @@ elif mode==2:
         print("3) Click 3 to exit")
         print()
         
-        try:
-            ch = int(input("Enter your choice: "))
+##        try:
+        ch = int(input("Enter your choice: "))
+        
+        if ch==1:
+
+            ques = []
             
-            if ch==1:
-
-                ques = []
-                
-    ##            print("The question are: ")
-    ##            c.execute("select QID, question, A, B, C, D from QUESTIONS;")
-    ##            for x in c:
-    ##                print(x)
-    ##            print("Enter answers: ")
-                
-                i2 = int(input("Enter your id: "))
-                na = input("Enter your name: ")
-                da= input("Enter date of examination(dd-mm-yyyy)")
-
-                q = "select question from QUESTIONS";
-                c.execute(q)
-                for x in c:
-                    ques.append(x[0])
-
-                options = []
-                for w in range(10):
-                    op = []
-                    oa = "select A from QUESTIONS where QID=%s"%(w+1)
-                    c.execute(oa)
-                    
-                    for x in c:
-                        op.append(x[0])
-                        
-                    ob = "select B from QUESTIONS where QID=%s"%(w+1)
-                    c.execute(ob)
-                    
-                    for x in c:
-                        op.append(x[0])
-                        
-                    oc = "select C from QUESTIONS where QID=%s"%(w+1)
-                    c.execute(oc)
-                    
-                    for x in c:
-                        op.append(x[0])
-                    od = "select D from QUESTIONS where QID=%s"%(w+1)
-                    c.execute(od)
-                    
-                    for x in c:
-                        op.append(x[0])
-
-                    options.append(op)
-                    
-                    
-                cnt = 0
-                
-                print("\nQuestion 1")
-                print(ques[cnt])
-                
-                choice = options[cnt]
-                
-                print("Option A: ",choice[0])
-                print("Option B: ",choice[1])
-                print("Option C: ",choice[2])
-                print("Option D: ",choice[3])
-                print()
-
-                a1 = input("Enter your answer(A/B/C/D): ")
-                cnt+=1
-
-                print("\nQuestion 2")
-                print(ques[cnt])
-                
-                choice = options[cnt]
-                
-                print("Option A: ",choice[0])
-                print("Option B: ",choice[1])
-                print("Option C: ",choice[2])
-                print("Option D: ",choice[3])
-                print()
-
-                a2 = input("Enter your answer(A/B/C/D): ")
-                cnt+=1
-
-                print("\nQuestion 3")
-                print(ques[cnt])
-                
-                choice = options[cnt]
-                
-                print("Option A: ",choice[0])
-                print("Option B: ",choice[1])
-                print("Option C: ",choice[2])
-                print("Option D: ",choice[3])
-                print()
-
-                a3 = input("Enter your answer(A/B/C/D): ")
-                cnt+=1
-
-                print("\nQuestion 4")
-                print(ques[cnt])
-                
-                choice = options[cnt]
-                
-                print("Option A: ",choice[0])
-                print("Option B: ",choice[1])
-                print("Option C: ",choice[2])
-                print("Option D: ",choice[3])
-                print()
-
-                a4 = input("Enter your answer(A/B/C/D): ")
-                cnt+=1
-
-                print("\nQuestion 5")
-                print(ques[cnt])
-                
-                choice = options[cnt]
-                
-                print("Option A: ",choice[0])
-                print("Option B: ",choice[1])
-                print("Option C: ",choice[2])
-                print("Option D: ",choice[3])
-                print()
-
-                a5 = input("Enter your answer(A/B/C/D): ")
-                cnt+=1
-
-                print("\nQuestion 6")
-                print(ques[cnt])
-                
-                choice = options[cnt]
-                
-                print("Option A: ",choice[0])
-                print("Option B: ",choice[1])
-                print("Option C: ",choice[2])
-                print("Option D: ",choice[3])
-                print()
-
-                a6 = input("Enter your answer(A/B/C/D): ")
-                cnt+=1
-
-                print("\nQuestion 7")
-                print(ques[cnt])
-                
-                choice = options[cnt]
-                
-                print("Option A: ",choice[0])
-                print("Option B: ",choice[1])
-                print("Option C: ",choice[2])
-                print("Option D: ",choice[3])
-                print()
-
-                a7 = input("Enter your answer(A/B/C/D): ")
-                cnt+=1
-
-                print("\nQuestion 8")
-                print(ques[cnt])
-                
-                choice = options[cnt]
-                
-                print("Option A: ",choice[0])
-                print("Option B: ",choice[1])
-                print("Option C: ",choice[2])
-                print("Option D: ",choice[3])
-                print()
-
-                a8 = input("Enter your answer(A/B/C/D): ")
-                cnt+=1
-
-                print("\nQuestion 9")
-                print(ques[cnt])
-                
-                choice = options[cnt]
-                
-                print("Option A: ",choice[0])
-                print("Option B: ",choice[1])
-                print("Option C: ",choice[2])
-                print("Option D: ",choice[3])
-                print()
-
-                a9 = input("Enter your answer(A/B/C/D): ")
-                cnt+=1
-
-                print("\nQuestion 10")
-                print(ques[cnt])
-                
-                choice = options[cnt]
-                
-                print("Option A: ",choice[0])
-                print("Option B: ",choice[1])
-                print("Option C: ",choice[2])
-                print("Option D: ",choice[3])
-                print()
-
-                a10 = input("Enter your answer(A/B/C/D): ")
-                cnt+=1
+##            print("The question are: ")
+##            c.execute("select QID, question, A, B, C, D from QUESTIONS;")
+##            for x in c:
+##                print(x)
+##            print("Enter answers: ")
             
-                
-                sc=10
-                m = "insert into STUDENTS values({},'{}', '{}', '{}', '{}', '{}', '{}', '{}','{}', '{}', '{}', '{}', '{}',{})".format(i2,na,da,a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,sc)
-                c.execute(m)
-                d.commit()
-                
-                ans_list = [a1,a2,a3,a4,a5,a6,a7,a8,a9,a10]
-                que_list=[]
-                
-                ca = "select answer from QUESTIONS";
-                c.execute(ca)
+            i2 = int(input("Enter your id: "))
+            na = input("Enter your name: ")
+            da= input("Enter date of examination(dd-mm-yyyy)")
+
+            q = "select question from QUESTIONS";
+            c.execute(q)
+            for x in c:
+                ques.append(x[0])
+
+            options = []
+            for w in range(10):
+                op = []
+                oa = "select A from QUESTIONS where QID=%s"%(w+1)
+                c.execute(oa)
                 
                 for x in c:
-                    que_list.append(x[0])
+                    op.append(x[0])
+                    
+                ob = "select B from QUESTIONS where QID=%s"%(w+1)
+                c.execute(ob)
+                
+                for x in c:
+                    op.append(x[0])
+                    
+                oc = "select C from QUESTIONS where QID=%s"%(w+1)
+                c.execute(oc)
+                
+                for x in c:
+                    op.append(x[0])
+                od = "select D from QUESTIONS where QID=%s"%(w+1)
+                c.execute(od)
+                
+                for x in c:
+                    op.append(x[0])
+
+                options.append(op)
+                
+                
+            cnt = check()
+            
+            print("\nQuestion 1")
+            print(ques[cnt])
+            
+            choice = options[cnt]
+            
+            print("Option A: ",choice[0])
+            print("Option B: ",choice[1])
+            print("Option C: ",choice[2])
+            print("Option D: ",choice[3])
+            print()
+
+            a1 = input("Enter your answer(A/B/C/D): ")
+            cnt = check()
+
+            print("\nQuestion 2")
+            print(ques[cnt])
+            
+            choice = options[cnt]
+            
+            print("Option A: ",choice[0])
+            print("Option B: ",choice[1])
+            print("Option C: ",choice[2])
+            print("Option D: ",choice[3])
+            print()
+
+            a2 = input("Enter your answer(A/B/C/D): ")
+            cnt = check()
+
+            print("\nQuestion 3")
+            print(ques[cnt])
+            
+            choice = options[cnt]
+            
+            print("Option A: ",choice[0])
+            print("Option B: ",choice[1])
+            print("Option C: ",choice[2])
+            print("Option D: ",choice[3])
+            print()
+
+            a3 = input("Enter your answer(A/B/C/D): ")
+            cnt = check()
+
+            print("\nQuestion 4")
+            print(ques[cnt])
+            
+            choice = options[cnt]
+            
+            print("Option A: ",choice[0])
+            print("Option B: ",choice[1])
+            print("Option C: ",choice[2])
+            print("Option D: ",choice[3])
+            print()
+
+            a4 = input("Enter your answer(A/B/C/D): ")
+            cnt = check()
+
+            print("\nQuestion 5")
+            print(ques[cnt])
+            
+            choice = options[cnt]
+            
+            print("Option A: ",choice[0])
+            print("Option B: ",choice[1])
+            print("Option C: ",choice[2])
+            print("Option D: ",choice[3])
+            print()
+
+            a5 = input("Enter your answer(A/B/C/D): ")
+            cnt = check()
+
+            print("\nQuestion 6")
+            print(ques[cnt])
+            
+            choice = options[cnt]
+            
+            print("Option A: ",choice[0])
+            print("Option B: ",choice[1])
+            print("Option C: ",choice[2])
+            print("Option D: ",choice[3])
+            print()
+
+            a6 = input("Enter your answer(A/B/C/D): ")
+            cnt = check()
+
+            print("\nQuestion 7")
+            print(ques[cnt])
+            
+            choice = options[cnt]
+            
+            print("Option A: ",choice[0])
+            print("Option B: ",choice[1])
+            print("Option C: ",choice[2])
+            print("Option D: ",choice[3])
+            print()
+
+            a7 = input("Enter your answer(A/B/C/D): ")
+            cnt = check()
+
+            print("\nQuestion 8")
+            print(ques[cnt])
+            
+            choice = options[cnt]
+            
+            print("Option A: ",choice[0])
+            print("Option B: ",choice[1])
+            print("Option C: ",choice[2])
+            print("Option D: ",choice[3])
+            print()
+
+            a8 = input("Enter your answer(A/B/C/D): ")
+            cnt = check()
+
+            print("\nQuestion 9")
+            print(ques[cnt])
+            
+            choice = options[cnt]
+            
+            print("Option A: ",choice[0])
+            print("Option B: ",choice[1])
+            print("Option C: ",choice[2])
+            print("Option D: ",choice[3])
+            print()
+
+            a9 = input("Enter your answer(A/B/C/D): ")
+            cnt = check()
+
+            print("\nQuestion 10")
+            print(ques[cnt])
+            
+            choice = options[cnt]
+            
+            print("Option A: ",choice[0])
+            print("Option B: ",choice[1])
+            print("Option C: ",choice[2])
+            print("Option D: ",choice[3])
+            print()
+
+            a10 = input("Enter your answer(A/B/C/D): ")
+            
+        
+            
+            sc=10
+            m = "insert into STUDENTS values({},'{}', '{}', '{}', '{}', '{}', '{}', '{}','{}', '{}', '{}', '{}', '{}',{})".format(i2,na,da,a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,sc)
+            c.execute(m)
+            d.commit()
+            
+            ans_list = [a1,a2,a3,a4,a5,a6,a7,a8,a9,a10]
+            que_list=[]
+            
+            ca = "select answer from QUESTIONS";
+            c.execute(ca)
+            
+            for x in c:
+                que_list.append(x[0])
+            marks=0
+            
+            for w in range(10):
+                if (ans_list[w]).lower==(que_list[w]).lower:
+                    marks+=1
+                    
+            k = "update STUDENTS set score = %s where SID = %s"%(marks, i2)
+            c.execute(k)
+            d.commit()
+            
+        elif ch==2:
+            try:
+                i = int(input("Enter your id: "))
+                ma = "select score from STUDENTS where SID=%s"%(i)
+                c.execute(ma)
+                
                 marks=0
+                name = ""
+                date_of_exam = ""
                 
-                for w in range(10):
-                    if ans_list[w]==que_list[w]:
-                        marks+=1
-                        
-                k = "update STUDENTS set score = %s where SID = %s"%(marks, i2)
-                c.execute(k)
-                d.commit()
-                
-            elif ch==2:
-                try:
-                    i = int(input("Enter your id: "))
-                    ma = "select score from STUDENTS where SID=%s"%(i)
-                    c.execute(ma)
+                for x in c:
+                    marks = x
                     
-                    marks=0
-                    name = ""
-                    date_of_exam = ""
+                na = "select name from STUDENTS where SID=%s"%(i)
+                c.execute(na)
+                for x in c:
+                    name = x
                     
-                    for x in c:
-                        marks = x
-                        
-                    na = "select name from STUDENTS where SID=%s"%(i)
-                    c.execute(na)
-                    for x in c:
-                        name = x
-                        
-                    da = "select date_of_exam from STUDENTS where SID=%s"%(i)
-                    c.execute(da)
-                    for x in c:
-                        date_of_exam = x
+                da = "select date_of_exam from STUDENTS where SID=%s"%(i)
+                c.execute(da)
+                for x in c:
+                    date_of_exam = x
 
-                    print()
-                    print("Student ID: ", i)
-                    print("Student Name: ", name[0])
-                    print("Date of Examination: ", date_of_exam[0])
-                    print("Marks obtained: ", marks[0])
-                    print()
-                    
-                except:
-                    print("_____Integer Value required_____")
-            
-            elif ch==3:
-                break
-        except:
-            print("_____Integer Value required_____")
+                print()
+                print("Student ID: ", i)
+                print("Student Name: ", name[0])
+                print("Date of Examination: ", date_of_exam[0])
+                print("Marks obtained: ", marks[0])
+                print()
+                
+            except:
+                print("_____Integer Value required_____")
+        
+        elif ch==3:
+            break
+##        except:
+##            print("_____Integer Value required_____")
 else:
     print("INVALID CHOICE")
 
