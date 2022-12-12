@@ -2,20 +2,11 @@ import mysql.connector as ms
 import time
 import random
 
-while True:
-    try:
-        pwd = input("Enter SQL Password: ")
-        d = ms.connect(
-          host="localhost",
-          user="root",
-          password=pwd
-        )
-        print("Connecting....")
-        print()
-        time.sleep(2)
-        break
-    except :
-        print("***WRONG PASSWORD***")
+d = ms.connect(
+  host="localhost",
+  user="root",
+  password="123456",charset="utf8"
+)
 
 
 c = d.cursor()
@@ -104,11 +95,13 @@ if mode==1:
                 options = []
                 
                 for w in range(10):
+                    
                     op = []
                     oa = "select A from QUESTIONS where QID=%s"%(w+1)
                     c.execute(oa)
                     
                     for x in c:
+                        
                         op.append(x[0])
                         
                     ob = "select B from QUESTIONS where QID=%s"%(w+1)
@@ -121,6 +114,7 @@ if mode==1:
                     c.execute(oc)
                     
                     for x in c:
+                        
                         op.append(x[0])
                         
                     od = "select D from QUESTIONS where QID=%s"%(w+1)
@@ -141,6 +135,7 @@ if mode==1:
                 cnt = 0
             
                 print("\nQuestion 1")
+                
                 print(ques[cnt])
                 
                 choice = options[cnt]
@@ -330,9 +325,11 @@ if mode==1:
                 print("Question updated sucessfully....")
 
             elif ch==4:
+                
                 break
         except:
             print("_____Integer Value required_____")
+            
 elif mode==2:
     
     while True:
@@ -481,6 +478,7 @@ elif mode==2:
             cnt = check()
 
             print("\nQuestion 7")
+            
             print(ques[cnt])
             
             choice = options[cnt]
@@ -549,6 +547,7 @@ elif mode==2:
             c.execute(ca)
             
             for x in c:
+                
                 que_list.append(x[0])
             marks=0
             
@@ -561,6 +560,7 @@ elif mode==2:
             d.commit()
             
         elif ch==2:
+            
             try:
                 i = int(input("Enter your id: "))
                 ma = "select score from STUDENTS where SID=%s"%(i)
